@@ -113,26 +113,42 @@ section{padding:7rem 4rem;}
 .w-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;}
 .wi{overflow:hidden;cursor:pointer;background:#FFFFFF;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:all 0.3s ease;display:flex;flex-direction:column;}
 .wi:hover{transform: translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.1);}
-/* 默认卡片大小 - 所有选项卡都使用相同的大小 */
 .w-grid > .wi{grid-column:span 6;}
 .w-grid > .wi .wi-img{aspect-ratio:16/9;}
 .w-grid > .wi-column{display:contents;}
 .w-grid > .wi-column .wi{grid-column:span 6;}
 .w-grid > .wi-column .wi .wi-img{aspect-ratio:16/9;}
 
-/* 全部选项卡的特殊排版 */
-.w-grid.show-all > .wi.wi-large{grid-column:span 9;}
-.w-grid.show-all > .wi.wi-large .wi-img{aspect-ratio:16/9;}
-.w-grid.show-all > .wi-column{display:flex;flex-direction:column;gap:1rem;grid-column:span 3;}
-.w-grid.show-all > .wi-column .wi{grid-column:auto;}
-.w-grid.show-all > .wi-column .wi .wi-img{aspect-ratio:4/3;}
-/* 所有组的顺序调整 - 只在全部选项卡中生效 */
-.w-grid.show-all > .group1-large{order:1;}
-.w-grid.show-all > .group1-column{order:2;}
-.w-grid.show-all > .group2-column{order:3;}
-.w-grid.show-all > .group2-large{order:4;}
-.w-grid.show-all > .group3-large{order:5;}
-.w-grid.show-all > .group3-column{order:6;}
+/* 响应式设计 - 移动端适配 */
+@media (max-width: 768px) {
+  .w-grid{grid-template-columns: repeat(1, 1fr);gap:.8rem;}
+  .w-grid > .wi{grid-column:span 1;}
+  .w-grid > .wi .wi-img{aspect-ratio:4/3;}
+  .w-grid > .wi-column{display:contents;}
+  .w-grid > .wi-column .wi{grid-column:span 1;}
+  .w-grid > .wi-column .wi .wi-img{aspect-ratio:4/3;}
+}
+
+/* 平板设备适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .w-grid{grid-template-columns: repeat(6, 1fr);}
+  .w-grid > .wi{grid-column:span 3;}
+  .w-grid > .wi-column .wi{grid-column:span 3;}
+}
+
+/* 中等屏幕适配 */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .w-grid{grid-template-columns: repeat(12, 1fr);}
+  .w-grid > .wi{grid-column:span 6;}
+  .w-grid > .wi-column .wi{grid-column:span 6;}
+}
+
+/* 小屏幕平板适配 */
+@media (min-width: 769px) and (max-width: 900px) {
+  .w-grid{grid-template-columns: repeat(4, 1fr);}
+  .w-grid > .wi{grid-column:span 2;}
+  .w-grid > .wi-column .wi{grid-column:span 2;}
+}
 .wi-img{width:100%;overflow:hidden;position:relative;transition:transform .6s cubic-bezier(.25,.46,.45,.94);border-radius:8px 8px 0 0;}
 
 .wi:hover .wi-img{transform:scale(1.04);}
